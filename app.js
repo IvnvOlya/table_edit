@@ -13,28 +13,29 @@ function outData(){
                     <td>${item.name.firstName}</td>
                     <td>${item.name.lastName}</td>
                     <td class="about_text">${item.about}</td>
-                    <td bgColor=${item.eyeColor}>${item.eyeColor}</td>
+                    <td style=background:${item.eyeColor}></td>
                     </tr>`
         }
         document.querySelector('.tbody').innerHTML = out; //выводим данные в таблицу
    }}
-
 const table = document.querySelector('.table_sort');//получаем таблицу
 const tbody = document.querySelector('tbody');//получаем тело таблицы, которое будем сортировать
 const btn = document.querySelector('.btn');//получаем кнопку
 const edit = document.querySelector('.text_edit');//получаем окно редактирования
-
 table.addEventListener('click', f1) //вешаем слушателя на таблицу
 
 function sortTable(index){ //ф-я сортировки таблицы
-    console.log('click') 
-    function compare(rowA, rowB) { //ф-я, которая будет сравнивать одну строчку с другой
-        const rowDataA = rowA.cells[index].innerHTML; //значение одной ячейки
-        const rowDataB = rowB.cells[index].innerHTML; //значение второй ячейки
-        if(rowDataA < rowDataB) return -1; 
-        else if(rowDataA > rowDataB) return 1;
+    function compare(a, b) { //ф-я, которая будет сравнивать одну строчку с другой
+        const dataA = a.cells[index].innerHTML; //значение одной ячейки
+        const dataB = b.cells[index].innerHTML; //значение второй ячейки
+        const styleA = a.cells[index].style.background; //цвет фона первой ячейки
+        const styleB = b.cells[index].style.background;//цвет фона второй ячейки
+
+        if(dataA < dataB || styleA < styleB) return -1; 
+        else if(dataA > dataB || styleA > styleB) return 1;
         else return 0;
     }
+
     let rowsArray = [].slice.call(tbody.rows); //получаем массив строк
     // console.log(rowsArray)
     rowsArray.sort(compare); //применяем метод сортировки массива и получим отсортированный массив строчек
@@ -60,21 +61,22 @@ function f1(e) { //ф-я слушателя
 function editText(element){ //ф-я редактирования
     console.log(element)
     if(element){ //если клик по эл-ту
+        btn.classList.add('active'); // добавляем кнопке класс, чтобы кнопка была видна на стр
         edit.classList.remove('remove_active'); //удаляем класс, чтобы div был виден
         edit.innerHTML = element.innerHTML; //текст из ячейки копируем в div
         edit.contentEditable = true; //включаем возможность редактирования
+        
         edit.focus(); //устанавливаем фокус на div 
-        btn.classList.add('active'); // добавляем кнопке класс, чтобы кнопка была видна на стр
-        console.log(element.innerHTML);
+        //console.log(element.innerHTML);
     }
-    btn.addEventListener('click', function(){ //вешаем слушателя на кнопку
+    btn.addEventListener('click', function func(){ //вешаем слушателя на кнопку
         btn.classList.remove('active');//удаляем класс, чтобы кнопка исчезла
+        edit.classList.add('remove_active'); //добавляем  класс 
         element.innerHTML = edit.innerHTML; //текст, который редактировали записываем в ячейку
-        edit.classList.add('remove_active'); //добавляем
         edit.contentEditable = false;//выкл возможность редактирования
-
     })
 }
+
 
    //ф-я для обрезки about
 // function cutOffStr(){
