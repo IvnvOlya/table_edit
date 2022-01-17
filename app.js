@@ -76,7 +76,6 @@ function editText(element){ //ф-я редактирования
     })
 }
 
-
    //ф-я для обрезки about
 // function cutOffStr(){
 //     //максимальная длина строки
