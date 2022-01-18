@@ -8,7 +8,6 @@ function outData(){
         const data = eval('(' + req.responseText + ')'); //возвращаем ответ от сервера в виде строки
         let out = ''; //переменная для вывода данных на страницу
         for (item of data){ //перебираем данные из json и добавляем в ячейки
-            // console.log(item)
             out += `<tr d=${item.id}>
                     <td>${item.name.firstName}</td>
                     <td>${item.name.lastName}</td>
@@ -76,25 +75,3 @@ function editText(element){ //ф-я редактирования
         edit.contentEditable = false;//выкл возможность редактирования
     })
 }
-
-
-   //ф-я для обрезки about
-// function cutOffStr(){
-//     //максимальная длина строки
-//     let size = 100;
-//     //получаем все эл-ты about
-//     let content= document.querySelectorAll('.about_text');
-//     //перебираем коллекцию NodeList
-//     content.forEach(function(item){
-//         //получаем текст в эл-те
-//         let text = item.innerHTML;
-//         //задаем новую пустую строчку
-//         let newText = '';
-//         //если длина текста больше заданного, то обрезаем и добавляем три точки
-//         if(text.length>size){
-//             newText= text.substring(0,size)+ '...'
-//         }
-//         //перезаписываем новый текст и выводим
-//         item.innerHTML = newText
-//     })
-// }
