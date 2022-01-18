@@ -1,5 +1,5 @@
-const req = new XMLHttpRequest();//делаем запрос на получение данных из файла json
-req.open("GET", "data.json", true);
+const req = new XMLHttpRequest(); //делаем запрос на получение данных из файла json
+req.open("GET", "data.json", true); 
 req.onreadystatechange = outData;   // обработчик
 req.send(null);
 
@@ -9,17 +9,19 @@ function outData(){
         let out = ''; //переменная для вывода данных на страницу
         for (item of data){ //перебираем данные из json и добавляем в ячейки
             out += `<tr d=${item.id}>
-                    <td>${item.name.firstName}</td>
-                    <td>${item.name.lastName}</td>
-                    <td class="about_text">${item.about}</td>
-                    <td style=background:${item.eyeColor}></td>
+                    <td class="col-1">${item.name.firstName}</td>
+                    <td class="col-2">${item.name.lastName}</td>
+                    <td class="col-3 about_text">${item.about}</td>
+                    <td class="col-2" style=background:${item.eyeColor}></td>
                     </tr>`
         }
         document.querySelector('.tbody').innerHTML = out; //выводим данные в таблицу
    }}
 const table = document.querySelector('.table_sort');//получаем таблицу
 const tbody = document.querySelector('tbody');//получаем тело таблицы, которое будем сортировать
-const btn = document.querySelector('.btn');//получаем кнопку
+const btnSave = document.querySelector('.btn_save');//получаем кнопку
+const btnHidden = document.querySelectorAll('.btn_hidden')
+
 const edit = document.querySelector('.text_edit');//получаем окно редактирования
 table.addEventListener('click', f1) //вешаем слушателя на таблицу
 
@@ -50,17 +52,37 @@ function f1(e) { //ф-я слушателя
     const element = e.target;
     
     if(element.tagName === 'TH') { //если клик  по заголовку таблицы th
-    const index = element.cellIndex; //присваиваем переменной index номер ячейки в строке, по которой кликнули
-    sortTable(index); //вызываем ф-ю сортировки
-    }else if(element.tagName === 'TD') { //если клик по td
-        editText(e.target) // вызываем ф-ю редактирования
-    }else return;
+        const index = element.cellIndex; //присваиваем переменной index номер ячейки в строке, по которой кликнули
+        sortTable(index); //вызываем ф-ю сортировки
+    }
+    else if(element.tagName === 'TD') { //если клик по td
+        editText(element) // вызываем ф-ю редактирования
+    }
+    else return;
 };
 
+function changeTextBtnHidden (column){ //ф-я изменения текст кнопки при нажатии
+    const btnHidden = document.querySelectorAll('.btn_hidden'); //получаем кнопки
+    const arrBtnHidden = Array.prototype.slice.call(btnHidden); // NodeList в массив
+    const textBtnHidden = arrBtnHidden[column].textContent; // получаем текст кнопки, которую нажали
+
+    if(textBtnHidden == 'Hide' ){ // если текст кнопки Hide
+        arrBtnHidden[column].textContent = 'Show'; // то меняем текст на Show
+    } else { // если текст кнопки, не Hide
+        arrBtnHidden[column].textContent = 'Hide'; // то меняем текст на Hide
+    }
+}
+
+function hide ( column ) { //ф-я клика на кнопку для показать/скрыть столбец
+    changeTextBtnHidden (column); //вызываем ф-ю изменения текст на кнопке при клике
+    
+    for ( let i = 0; i < table.rows.length; i++ ){ // перебираем ячейки
+        table.rows[ i ].cells[ column ].classList.toggle('hidden');} // при клике на кнопку добавляем или убираем класс hidden
+    }
+
 function editText(element){ //ф-я редактирования
-    console.log(element)
     if(element){ //если клик по эл-ту
-        btn.classList.add('active'); // добавляем кнопке класс, чтобы кнопка была видна на стр
+        btnSave.classList.add('active'); // добавляем кнопке класс, чтобы кнопка была видна на стр
         edit.classList.remove('remove_active'); //удаляем класс, чтобы div был виден
         edit.innerHTML = element.innerHTML; //текст из ячейки копируем в div
         edit.contentEditable = true; //включаем возможность редактирования
@@ -68,10 +90,36 @@ function editText(element){ //ф-я редактирования
         edit.focus(); //устанавливаем фокус на div 
         //console.log(element.innerHTML);
     }
-    btn.addEventListener('click', function func(){ //вешаем слушателя на кнопку
-        btn.classList.remove('active');//удаляем класс, чтобы кнопка исчезла
+    btnSave.addEventListener('click', function func(){ //вешаем слушателя на кнопку
+        btnSave.classList.remove('active');//удаляем класс, чтобы кнопка исчезла
         edit.classList.add('remove_active'); //добавляем  класс 
         element.innerHTML = edit.innerHTML; //текст, который редактировали записываем в ячейку
         edit.contentEditable = false;//выкл возможность редактирования
     })
 }
+
+// function pageTable(){
+//     console.log(table.find('tbody'))
+// };
+// pageTable()
+
+   //ф-я для обрезки about
+// function cutOffStr(){
+//     //максимальная длина строки
+//     let size = 100;
+//     //получаем все эл-ты about
+//     let content= document.querySelectorAll('.about_text');
+//     //перебираем коллекцию NodeList
+//     content.forEach(function(item){
+//         //получаем текст в эл-те
+//         let text = item.innerHTML;
+//         //задаем новую пустую строчку
+//         let newText = '';
+//         //если длина текста больше заданного, то обрезаем и добавляем три точки
+//         if(text.length>size){
+//             newText= text.substring(0,size)+ '...'
+//         }
+//         //перезаписываем новый текст и выводим
+//         item.innerHTML = newText
+//     })
+// }
