@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Test</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <section class="main">
-            <div class="cart">
-                <div class="btn_control">
-                    <button onclick="hide(0)" class="btn_hidden">Hide</button>
-                    <button onclick="hide(1)" class="btn_hidden">Hide</button>
-                    <button onclick="hide(2)" class="btn_hidden">Hide</button>
-                    <button onclick="hide(3)" class="btn_hidden">Hide</button>
-                </div>
-                    <table class="table_sort">
-                        <thead>
-                            <tr> 
-                                <th class="firstName">FirstName</th>
-                                <th class="lastName">LastName</th>
-                                <th class="about">About</th>
-                                <th class="eyeColor">EyeColor</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tbody">
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3"></td>
-                            </tr>
-                            </tfoot>
-                    </table>    
-                </div>
+      <section class="main">
+        <div class="cart">
+          <div class="btn_control">
+            <button onclick="hide(0)" class="btn_hidden">Hide</button>
+            <button onclick="hide(1)" class="btn_hidden">Hide</button>
+            <button onclick="hide(2)" class="btn_hidden">Hide</button>
+            <button onclick="hide(3)" class="btn_hidden">Hide</button>
+          </div>
+          <table class="table_sort">
+            <thead>
+              <tr>
+                <th class="firstName">FirstName</th>
+                <th class="lastName">LastName</th>
+                <th class="about">About</th>
+                <th class="eyeColor">EyeColor</th>
+              </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
 
-                <div class="edit">
-                    <div class="text_edit active_text"></div>
-                    <button class="btn_save">SAVE</button>
-                </div>
-        </section>
+        <div class="edit">
+          <div class="text_edit active_text"></div>
+          <button class="btn_save">SAVE</button>
+        </div>
+      </section>
     </div>
     <script src="./app.js"></script>
-</body>
+  </body>
 </html>

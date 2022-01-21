@@ -1,43 +1,45 @@
-.main{
-    display: flex;
-    justify-content: space-around;
+.main {
+  display: flex;
+  justify-content: space-around;
 }
 .cart {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
-.btn_control{
-    display: grid;
-    grid-template-columns: 1fr 1fr 7fr 1fr;
+.btn_control {
+  display: grid;
+  grid-template-columns: 1fr 1fr 7fr 1fr;
 }
 
-table  {
-    cursor: pointer;
-    border-collapse: collapse; 
+table {
+  cursor: pointer;
+  border-collapse: collapse;
 }
-th, td {
-    padding: 0.2em 0.4em; 
-    border: 1px solid #ccc; 
+th,
+td {
+  padding: 0.2em 0.4em;
+  border: 1px solid #ccc;
 }
-.about_text{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    /* ограничение 2мя строками */
-    -webkit-line-clamp: 2;
-    /* скрываем остальной текст, который не поместился */
-    overflow: hidden;
+.about_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* ограничение 2мя строками */
+  -webkit-line-clamp: 2;
+  /* скрываем остальной текст, который не поместился */
+  overflow: hidden;
 }
-.edit{
-    width: 50%;
+.edit {
+  width: 50%;
 }
-.btn_save, .remove_active {
-    display: none;
+.btn_save,
+.remove_active {
+  display: none;
 }
 .active {
-    display: block;
+  display: block;
 }
 .hidden {
-    visibility: hidden;
-    border: none;
+  visibility: hidden;
+  border: none;
 }
