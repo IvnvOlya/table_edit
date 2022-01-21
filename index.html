@@ -9,35 +9,38 @@
   </head>
   <body>
     <div id="container">
-      <section class="main">
-        <div class="cart">
-          <div class="btn_control">
-            <button onclick="hide(0)" class="btn_hidden">Hide</button>
-            <button onclick="hide(1)" class="btn_hidden">Hide</button>
-            <button onclick="hide(2)" class="btn_hidden">Hide</button>
-            <button onclick="hide(3)" class="btn_hidden">Hide</button>
+      <section>
+        <div class="top">
+          <div class="cart">
+            <div class="btn_control">
+              <button onclick="hide(0)" class="btn_hidden">Hide</button>
+              <button onclick="hide(1)" class="btn_hidden">Hide</button>
+              <button onclick="hide(2)" class="btn_hidden">Hide</button>
+              <button onclick="hide(3)" class="btn_hidden">Hide</button>
+            </div>
+            <table class="table_sort">
+              <thead>
+                <tr>
+                  <th class="firstName">FirstName</th>
+                  <th class="lastName">LastName</th>
+                  <th class="about">About</th>
+                  <th class="eyeColor">EyeColor</th>
+                </tr>
+              </thead>
+              <tbody class="tbody"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3"></td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
-          <table class="table_sort">
-            <thead>
-              <tr>
-                <th class="firstName">FirstName</th>
-                <th class="lastName">LastName</th>
-                <th class="about">About</th>
-                <th class="eyeColor">EyeColor</th>
-              </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-            <tfoot>
-              <tr>
-                <td colspan="3"></td>
-              </tr>
-            </tfoot>
-          </table>
+          <div class="edit">
+            <div class="text_edit"></div>
+          </div> 
         </div>
-
-        <div class="edit">
-          <div class="text_edit active_text"></div>
-          <button class="btn_save">SAVE</button>
+        <div class="bottom">
+          <ul class="pagination"></ul>
         </div>
       </section>
     </div>

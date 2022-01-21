@@ -5,7 +5,7 @@ const btnHidden = document.querySelectorAll(".btn_hidden");
 const edit = document.querySelector(".text_edit"); //получаем окно редактирования
 const pagination = document.querySelector(".pagination"); //получаем список переключения по страницам
 
-let strOnPage = 10; // кол-во строк таблицы на странице
+let strOnPage = 10; // кол-во строк таблицы на странице 
 
 //получаем данные из JSON 
 const req = new XMLHttpRequest(); //делаем запрос на получение данных из файла json
